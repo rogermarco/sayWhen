@@ -9,11 +9,7 @@ export const metadata: Metadata = {
   description: 'A website to create events',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-orange-50`}>{children}</body>
