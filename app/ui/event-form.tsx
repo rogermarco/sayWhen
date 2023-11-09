@@ -1,11 +1,12 @@
 'use client'
 
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 function EventForm () {
 const [title, setTitle] = useState('');
 const [mode, setMode] = useState('');
+const [date, setDate] = useState('');
 const [location, setLocation] = useState('');
 
 const modesArray = ['Autocracy', 'Democracy'];
@@ -13,7 +14,7 @@ const locationArray = ['I know where', 'I want help'];
 
   return ( 
     <div className='w-full h-full flex'>
-      <form className='m-auto'>
+      <form className='m-auto w-1/3'>
         <h1 className='text-center'>Start a party!</h1>
         <div className='form-control'>
           <h2>Title</h2>
@@ -28,39 +29,77 @@ const locationArray = ['I know where', 'I want help'];
         </div>
 
         <h2>Pick a date or ask your guests</h2>
-        <div className='form-control flex justify-around'>
+        <div className='form-control flex flex-col justify-around'>
           {/* MODE SELECTION */}
-          {modesArray.map((mode, index) => {
-            return (
-              <div key={index}>
-                <input
-                key={index}
-                type='radio'
-                name='mode'
-                onChange={() => setMode(mode)}
-                />
-                <label>{`${mode} mode`}</label>
-              </div>
-            )
-          })}
+          <div className='flex'>
+            {modesArray.map((mode, index) => {
+              // const id = uuidv4();
+              return (
+                <div key={index}>
+                  <input
+                  type='radio'
+                  name='mode'
+                  required={true}
+                  onChange={() => setMode(mode)}
+                  />
+                  <label className='px-3'>{`${mode} mode`}</label>
+                </div>
+              )
+            })}
+          </div>
+          {/* MODE OPTION RENDERING */}
+          {(mode == 'Autocracy') &&
+            <input
+            type='datetime-local'
+            name='date'
+            required={true}
+            onChange={(e) => setDate(e.target.value)}
+            />
+            ||
+          (mode == 'Democracy') &&
+            <p>some interactive calendar</p>
+          }
         </div>
 
         <h2>Pick the location</h2>
-        <div className='form-control flex'>
+        <div className='form-control flex flex-col justify-around'>
           {/* LOCATION SELECTION */}
-          {locationArray.map((location, index) => {
-            return (
-              <div key={index}>
-                <input
-                key={index}
-                type='radio'
-                name='location'
-                onChange={() => setLocation(location)}
-                />
-                <label>{`${location}`}</label>
-              </div>
-            )
-          })}
+          <div className='flex'>
+            {locationArray.map((location, index) => {
+              // const id = uuidv4();
+              return (
+                <div key={index}>
+                  <input
+                  type='radio'
+                  name='location'
+                  required={true}
+                  onChange={() => setLocation(location)}
+                  />
+                  <label className='px-3'>{`${location}`}</label>
+                </div>
+              )
+            })}
+          </div>
+          {/* LOCATION OPTION RENDERING */}
+          {(location == 'I know where') &&
+            <input
+              type='text'
+              name='location'
+              required={true}
+              onChange={e => setLocation(e.target.value)}
+              className='w-full'
+              placeholder='API CALL HERE'
+            />
+            ||
+          (location == 'I want help') &&
+          <input
+            type='text'
+            name='search'
+            required={true}
+            className='w-full'
+            placeholder='API CALL HERE'
+          />  
+          }
         </div>
       </form>
     </div>
