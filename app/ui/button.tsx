@@ -6,7 +6,7 @@ function Button ({ label }: ButtonProps) {
   return ( 
     <button
     className=
-      'h-20 w-52 items-center text-center rounded-lg bg-orange-600 text-white transition-colors hover:bg-orange-800'
+      'h-20 w-52 items-center text-center tracking-tighter rounded-lg bg-logo-orange text-white transition-colors hover:bg-orange-600'
     >
       {label}
     </button>

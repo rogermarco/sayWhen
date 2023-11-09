@@ -18,7 +18,7 @@ export default function Home() {
           />
           {/* Smaller logo image here for small screens */}
         </div>
-        <h2 className="text-blue-500 text-2xl text-center py-10">Organise your mates. Just say when.</h2>
+        <h2 className="text-logo-blue text-3xl text-center font-semibold tracking-tighter py-10">Organise your mates. Just say when.</h2>
         <div className='flex space-x-4 justify-center'>
           <Button label='Log in'/>
           <Button label='Continue without account'/>
