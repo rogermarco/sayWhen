@@ -13,7 +13,7 @@ function Button ({ label }: ButtonProps) {
 
   return ( 
     <>
-    {(label == 'Log in') && <button
+    {(label == 'Register / Log in') && <button
       className='btn-primary'
     >
     {label}

@@ -21,7 +21,7 @@ export default function Home() {
         </div>
         <h2 className="text-logo-blue text-3xl text-center font-semibold tracking-tighter py-10">Organise your mates. Just say when.</h2>
         <div className='flex space-x-4 justify-center'>
-          <Button label='Log in'/>
+          <Button label='Register / Log in'/>
           <Button label='Continue without account'/>
         </div>
       </div>

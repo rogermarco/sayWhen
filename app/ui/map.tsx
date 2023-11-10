@@ -17,7 +17,10 @@ function Map () {
       onPlaceSelected={(place) => {setPlace(place.place_id!)}
       }
       options={
-        {types: ['bar']}
+        {
+          types: ['bar'],
+          componentRestrictions: {country: 'es'}
+        }
       }
     />
     {place && 

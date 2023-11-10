@@ -9,6 +9,7 @@ const [title, setTitle] = useState('');
 const [mode, setMode] = useState('');
 const [date, setDate] = useState('');
 const [locationMode, setLocationMode] = useState('');
+const [eventLoc, setEventLoc] = useState('');
 
 const modesArray = ['Autocracy', 'Democracy'];
 const locationArray = ['I know where', 'I want help'];
