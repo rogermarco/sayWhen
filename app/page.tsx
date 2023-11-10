@@ -5,11 +5,11 @@ import EventForm from './ui/event-form';
 import Image from 'next/image';
 import logoBig from '../public/logo-big.png'
 
-
 export default function Home() {
+
   return (
     <main>
-      <div className='pt-48 h-screen'>
+      <div className='pt-24 h-screen'>
         <div className='flex items-center justify-center pt-10'>
           <Image
             src={logoBig}
@@ -24,7 +24,7 @@ export default function Home() {
           <Button label='Continue without account'/>
         </div>
       </div>
-      <div className='h-screen align-bottom'>
+      <div className='h-screen align-bottom' id='form'>
         <EventForm />
       </div>
     </main>

@@ -1,16 +1,34 @@
+'use client'
+
 interface ButtonProps {
-  label: string,
+  label: String,
 }
 
 function Button ({ label }: ButtonProps) {
+
+  const scrollToForm = () => {
+    const element = document.getElementById('form');
+    element?.scrollIntoView({ behavior: 'smooth' })
+}
+
   return ( 
-    <button
-    className=
-      'h-20 w-52 items-center text-center tracking-tighter rounded-lg bg-logo-orange text-white transition-colors hover:bg-orange-600'
+    <>
+    {(label == 'Log in') && <button
+      className='btn-primary'
     >
-      {label}
+    {label}
     </button>
-   );
+    ||
+    (label == 'Continue without account') &&
+    <button
+      className='btn-primary'
+      onClick={scrollToForm}
+    >
+    {label}
+    </button>
+    }
+    </>
+  );
 }
 
 export default Button;
