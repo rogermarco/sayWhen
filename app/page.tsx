@@ -10,7 +10,6 @@ export default function Home() {
 
   return (
     <main>
-      <Map />
       <div className='pt-24 h-screen'>
         <div className='flex items-center justify-center pt-10'>
           <Image

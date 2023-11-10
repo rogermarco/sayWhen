@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react';
+import Map from './map';
 // import { v4 as uuidv4 } from 'uuid';
 
 function EventForm () {
 const [title, setTitle] = useState('');
 const [mode, setMode] = useState('');
 const [date, setDate] = useState('');
-const [location, setLocation] = useState('');
+const [locationMode, setLocationMode] = useState('');
 
 const modesArray = ['Autocracy', 'Democracy'];
 const locationArray = ['I know where', 'I want help'];
@@ -73,7 +74,7 @@ const locationArray = ['I know where', 'I want help'];
                   type='radio'
                   name='location'
                   required={true}
-                  onChange={() => setLocation(location)}
+                  onChange={() => setLocationMode(location)}
                   />
                   <label className='px-3'>{`${location}`}</label>
                 </div>
@@ -81,17 +82,10 @@ const locationArray = ['I know where', 'I want help'];
             })}
           </div>
           {/* LOCATION OPTION RENDERING */}
-          {(location == 'I know where') &&
-            <input
-              type='text'
-              name='location'
-              required={true}
-              onChange={e => setLocation(e.target.value)}
-              className='w-full'
-              placeholder='API CALL HERE'
-            />
+          {(locationMode == 'I know where') &&
+            <Map />
             ||
-          (location == 'I want help') &&
+          (locationMode == 'I want help') &&
           <input
             type='text'
             name='search'
