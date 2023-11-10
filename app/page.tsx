@@ -1,14 +1,16 @@
 // import Nav from './ui/nav';
 import Button from './ui/button';
 import EventForm from './ui/event-form';
+import Map from './ui/map';
 
 import Image from 'next/image';
 import logoBig from '../public/logo-big.png'
 
-export default function Home() {
+export default function Home() { 
 
   return (
     <main>
+      <Map />
       <div className='pt-24 h-screen'>
         <div className='flex items-center justify-center pt-10'>
           <Image
