@@ -10,10 +10,11 @@ function Map () {
   useEffect(() => {
     const initMap = async () => {
       const { Map } = await loader.importLibrary('maps');
+      const { Marker } = await loader.importLibrary('marker');
 
       const position = {
-        lat: 0,
-        lng: 0
+        lat: 41.39498226818747,
+        lng: 2.197764766865293
       }
       const mapOptions: google.maps.MapOptions = {
         center: position,
@@ -21,6 +22,10 @@ function Map () {
         mapId: 'MAPID'
       }
       const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
+      const marker = new Marker({
+        map: map,
+        position: position
+      })
     }
     initMap();
   }, [])
