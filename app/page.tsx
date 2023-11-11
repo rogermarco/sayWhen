@@ -1,7 +1,6 @@
 // import Nav from './ui/nav';
 import Button from './ui/button';
 import EventForm from './ui/event-form';
-import Map from './ui/map';
 
 import Image from 'next/image';
 import logoBig from '../public/logo-big.png'

@@ -11,16 +11,16 @@ export interface BuilderTypes {
 }
 
 function EventForm () {
-const [dateMode, setDateMode] = useState('');
-const [locationMode, setLocationMode] = useState('');
-const [eventBuilder, setEventBuilder] = useState<BuilderTypes>({
-  title: '',
-  date: '',
-  location: ''
-});
+  const [dateMode, setDateMode] = useState('');
+  const [locationMode, setLocationMode] = useState('');
+  const [eventBuilder, setEventBuilder] = useState<BuilderTypes>({
+    title: '',
+    date: '',
+    location: ''
+  });
 
-const modesArray = ['Autocracy', 'Democracy'];
-const locationArray = ['I know where', 'I want help'];
+  const modesArray = ['Autocracy', 'Democracy'];
+  const locationArray = ['I know where', 'I want help'];
 
   return ( 
     <div className='w-full h-full flex'>
@@ -97,11 +97,11 @@ const locationArray = ['I know where', 'I want help'];
             name='search'
             required={true}
             className='w-full'
-            placeholder='restaurant, bar, cafe, etc'
+            placeholder="search for places with 'restaurant', 'bar', 'cafe', etc"
           />  
           }
         </div>
-        <SubmitButton />
+        <SubmitButton eventDetails={eventBuilder}/>
       </form>
     </div>
    );
