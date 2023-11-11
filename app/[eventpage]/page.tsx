@@ -4,12 +4,24 @@ import { useSearchParams } from "next/navigation";
 
 function EventPage () {
   const searchParams = useSearchParams()
-  
+  const eventDetails = {
+    title: searchParams.get('title'),
+    date: searchParams.get('date'),
+    location: searchParams.get('location')
+  }
+
   return ( 
     <div>
-      <p>{searchParams.get('title')}</p>
-      <p>{searchParams.get('date')}</p>
-      <p>{searchParams.get('location')}</p>
+      {/* IF DETAILS EXIST IN QUERY */}
+      {eventDetails.title &&
+      <>
+        <p>{eventDetails.title}</p>
+        <p>{eventDetails.date}</p>
+        <p>{eventDetails.location}</p>
+      </>
+        ||
+        <p>invalid link</p>
+      }
     </div>
    );
   }
