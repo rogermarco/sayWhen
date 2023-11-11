@@ -1,45 +1,52 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'; 
-import { loader } from "../lib/maps-service";
 import AutoComplete from 'react-google-autocomplete'
 import { API_KEY } from '@/secrets/apiKey';
+import { BuilderTypes } from './event-form';
 
-function Map () {
-  // const inputRef = useRef<HTMLInputElement>(null)
-  // const mapRef = useRef<HTMLDivElement>(null)
-  const [place, setPlace] = useState('')
+interface MapProps {
+  eventBuilder: BuilderTypes,
+  setEventBuilder: Function
+}
+
+function Map ( {eventBuilder, setEventBuilder}: MapProps ) {
 
   return ( 
     <>
     <AutoComplete
       apiKey={API_KEY}
-      onPlaceSelected={(place) => {setPlace(place.place_id!)}
+      onPlaceSelected={(place) => {setEventBuilder({...eventBuilder , location: place.place_id!})}
       }
       options={
         {
           types: ['bar'],
-          componentRestrictions: {country: 'es'}
+          componentRestrictions: {country: 'es'},
         }
       }
     />
-    {place && 
+    {eventBuilder.location && 
       <iframe
         width="450"
         height="450"
         referrerPolicy="no-referrer-when-downgrade"
-        src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=place_id:${place}&zoom=14`}
+        src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=place_id:${eventBuilder.location}&zoom=14`}
       >
       </iframe>
     }
-    {/* <div id='map' className='w-[500px] h-[500px]' ref={mapRef}></div> */}
     </>
   );
 }
 
 export default Map;
 
+///////////////////////
+// OTHER MAP METHODS //
+//////what a mess//////
+
 /*
+  // const inputRef = useRef<HTMLInputElement>(null)
+  // const mapRef = useRef<HTMLDivElement>(null)
+
 const [map, setMap] = useState<any>(null);  
 
 useEffect(() => {
@@ -65,7 +72,7 @@ useEffect(() => {
   });
 }, [address]);
 */
-
+    {/* <div id='map' className='w-[500px] h-[500px]' ref={mapRef}></div> */}
 
 
   // const createMap = async () => {

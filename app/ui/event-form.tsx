@@ -2,21 +2,29 @@
 
 import { useState } from 'react';
 import Map from './map';
-// import { v4 as uuidv4 } from 'uuid';
+import SubmitButton from './submit-button';
+
+export interface BuilderTypes {
+  title: string,
+  date: string,
+  location: string
+}
 
 function EventForm () {
-const [title, setTitle] = useState('');
-const [mode, setMode] = useState('');
-const [date, setDate] = useState('');
+const [dateMode, setDateMode] = useState('');
 const [locationMode, setLocationMode] = useState('');
-const [eventLoc, setEventLoc] = useState('');
+const [eventBuilder, setEventBuilder] = useState<BuilderTypes>({
+  title: '',
+  date: '',
+  location: ''
+});
 
 const modesArray = ['Autocracy', 'Democracy'];
 const locationArray = ['I know where', 'I want help'];
 
   return ( 
     <div className='w-full h-full flex'>
-      <form className='m-auto w-1/3'>
+      <form className='m-auto w-[450px]'>
         <h1 className='text-center'>Start a party!</h1>
         <div className='form-control'>
           <h2>Title</h2>
@@ -24,9 +32,8 @@ const locationArray = ['I know where', 'I want help'];
           type='text' 
           name='title' 
           required={true} 
-          value={title}
           className='w-full'
-          onChange={e => setTitle(e.target.value)}
+          onChange={e => setEventBuilder({...eventBuilder, title: e.target.value})}
           />
         </div>
 
@@ -35,14 +42,13 @@ const locationArray = ['I know where', 'I want help'];
           {/* MODE SELECTION */}
           <div className='flex'>
             {modesArray.map((mode, index) => {
-              // const id = uuidv4();
               return (
                 <div key={index}>
                   <input
                   type='radio'
                   name='mode'
                   required={true}
-                  onChange={() => setMode(mode)}
+                  onChange={() => setDateMode(mode)}
                   />
                   <label className='px-3'>{`${mode} mode`}</label>
                 </div>
@@ -50,15 +56,15 @@ const locationArray = ['I know where', 'I want help'];
             })}
           </div>
           {/* MODE OPTION RENDERING */}
-          {(mode == 'Autocracy') &&
+          {(dateMode == 'Autocracy') &&
             <input
             type='datetime-local'
             name='date'
             required={true}
-            onChange={(e) => setDate(e.target.value)}
+            onChange={(e) => setEventBuilder({...eventBuilder, date: e.target.value})}
             />
             ||
-          (mode == 'Democracy') &&
+          (dateMode == 'Democracy') &&
             <p>some interactive calendar</p>
           }
         </div>
@@ -68,7 +74,6 @@ const locationArray = ['I know where', 'I want help'];
           {/* LOCATION SELECTION */}
           <div className='flex'>
             {locationArray.map((location, index) => {
-              // const id = uuidv4();
               return (
                 <div key={index}>
                   <input
@@ -84,7 +89,7 @@ const locationArray = ['I know where', 'I want help'];
           </div>
           {/* LOCATION OPTION RENDERING */}
           {(locationMode == 'I know where') &&
-            <Map />
+            <Map eventBuilder={eventBuilder} setEventBuilder={setEventBuilder}/>
             ||
           (locationMode == 'I want help') &&
           <input
@@ -92,10 +97,11 @@ const locationArray = ['I know where', 'I want help'];
             name='search'
             required={true}
             className='w-full'
-            placeholder='API CALL HERE'
+            placeholder='restaurant, bar, cafe, etc'
           />  
           }
         </div>
+        <SubmitButton />
       </form>
     </div>
    );
