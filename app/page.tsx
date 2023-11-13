@@ -5,7 +5,7 @@ import EventForm from './ui/event-form';
 import Image from 'next/image';
 import logoBig from '../public/logo-big.png'
 
-export default function Home() { 
+export default async function Home() { 
 
   return (
     <main>

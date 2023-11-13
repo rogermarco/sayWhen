@@ -15,7 +15,8 @@ interface SubmitButtonProps {
 
 function SubmitButton ({ eventDetails }: SubmitButtonProps) {
   const { pending } = useFormStatus();
-  const eventPage = uuidv4();
+  
+  const eventPage = uuidv4().slice(0, 5);
 
   return (
     <Link href={{
@@ -24,7 +25,7 @@ function SubmitButton ({ eventDetails }: SubmitButtonProps) {
         title: eventDetails.title,
         date: eventDetails.date,
         location: eventDetails.location
-      }
+      },
     }}
       >
       <button 
