@@ -2,23 +2,26 @@
 
 import { useState } from 'react';
 import Map from './map';
+import Link from 'next/link';
 // import SubmitButton from './submit-button';
 
 
 export interface BuilderTypes {
+  _id: string,
   title: string,
   date: string,
   location: string,
 }
 
 interface EventFormProps {
-  eventPage: string
+  eventPageLink: string
 }
 
-function EventForm ({ eventPage }: EventFormProps) {
+function EventForm ({ eventPageLink }: EventFormProps) {
   const [dateMode, setDateMode] = useState('');
   const [locationMode, setLocationMode] = useState('');
   const [eventBuilder, setEventBuilder] = useState<BuilderTypes>({
+    _id: eventPageLink,
     title: '',
     date: '',
     location: ''
@@ -29,13 +32,11 @@ function EventForm ({ eventPage }: EventFormProps) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const _id = eventPage;
-    const createdAt = new Date();
     try {
       const res = await fetch('http://localhost:3000/api/event', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ _id, createdAt, ...eventBuilder })
+        body: JSON.stringify({ ...eventBuilder })
       })
     } catch (error) {
       console.log(error);
@@ -121,9 +122,11 @@ function EventForm ({ eventPage }: EventFormProps) {
           />  
           }
         </div>
-        <button type='submit' className='btn-secondary'>
-          Ready to go!
-        </button>
+        <Link href={{pathname: `/${eventPageLink}`}}>
+          <button type='submit' className='btn-secondary'>
+            Ready to go!
+          </button>
+        </Link>
       </form>
     </div>
    );
