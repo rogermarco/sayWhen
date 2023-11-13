@@ -1,42 +1,40 @@
-'use client'
+// 'use client'
 
-import { useFormStatus } from "react-dom";
-import Link from "next/link";
-import { v4 as uuidv4 } from 'uuid'
-import { BuilderTypes } from "./event-form";
+// import { useFormStatus } from "react-dom";
+// import Link from "next/link";
+// import { BuilderTypes } from "./event-form";
 
-interface SubmitButtonProps {
-  eventDetails: BuilderTypes
-}
+// interface SubmitButtonProps {
+//   eventDetails: BuilderTypes,
+//   eventPage: string,
+// }
 
-///////////////////////
-//FIX LINK GENERATION//
-///////////////////////
+// ///////////////////////
+// //FIX LINK GENERATION//
+// ///////////////////////
 
-function SubmitButton ({ eventDetails }: SubmitButtonProps) {
-  const { pending } = useFormStatus();
-  
-  const eventPage = uuidv4().slice(0, 5);
+// function SubmitButton ({ eventDetails, eventPage }: SubmitButtonProps) {
+//   const { pending } = useFormStatus();
 
-  return (
-    <Link href={{
-      pathname: `/${eventPage}`,
-      query: {
-        title: eventDetails.title,
-        date: eventDetails.date,
-        location: eventDetails.location
-      },
-    }}
-      >
-      <button 
-      type='submit' 
-      aria-disabled={pending}
-      className='btn-secondary'
-      >
-        Ready to go!
-      </button>
-    </Link>
-   );
-}
+//   return (
+//     <Link href={{
+//       pathname: `/${eventPage}`,
+//       query: {
+//         title: eventDetails.title,
+//         date: eventDetails.date,
+//         location: eventDetails.location
+//       },
+//     }}
+//       >
+//       <button 
+//       type='submit' 
+//       aria-disabled={pending}
+//       className='btn-secondary'
+//       >
+//         Ready to go!
+//       </button>
+//     </Link>
+//    );
+// }
 
-export default SubmitButton;
+// export default SubmitButton;

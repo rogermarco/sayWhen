@@ -5,7 +5,13 @@ import EventForm from './ui/event-form';
 import Image from 'next/image';
 import logoBig from '../public/logo-big.png'
 
+import { v4 as uuidv4 } from 'uuid'
+
 export default async function Home() { 
+  // lets go drilling to fix this href client/server issue
+  // generate new event page link on server side
+  // send it to client side via eventForm -> submitButton
+  const eventPage = uuidv4().slice(0, 5);
 
   return (
     <main>
@@ -25,7 +31,7 @@ export default async function Home() {
         </div>
       </div>
       <div className='h-screen align-bottom' id='form'>
-        <EventForm />
+        <EventForm eventPage={eventPage}/>
       </div>
     </main>
   )

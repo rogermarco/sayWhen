@@ -2,15 +2,20 @@
 
 import { useState } from 'react';
 import Map from './map';
-import SubmitButton from './submit-button';
+// import SubmitButton from './submit-button';
+
 
 export interface BuilderTypes {
   title: string,
   date: string,
-  location: string
+  location: string,
 }
 
-function EventForm () {
+interface EventFormProps {
+  eventPage: string
+}
+
+function EventForm ({ eventPage }: EventFormProps) {
   const [dateMode, setDateMode] = useState('');
   const [locationMode, setLocationMode] = useState('');
   const [eventBuilder, setEventBuilder] = useState<BuilderTypes>({
@@ -22,9 +27,24 @@ function EventForm () {
   const modesArray = ['Autocracy', 'Democracy'];
   const locationArray = ['I know where', 'I want help'];
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const _id = eventPage;
+    const createdAt = new Date();
+    try {
+      const res = await fetch('http://localhost:3000/api/event', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ _id, createdAt, ...eventBuilder })
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return ( 
     <div className='w-full h-full flex'>
-      <form className='m-auto w-[450px]'>
+      <form className='m-auto w-[450px]' onSubmit={handleSubmit}>
         <h1 className='text-center'>Start a party!</h1>
         <div className='form-control'>
           <h2>Title</h2>
@@ -101,7 +121,9 @@ function EventForm () {
           />  
           }
         </div>
-        <SubmitButton eventDetails={eventBuilder}/>
+        <button type='submit' className='btn-secondary'>
+          Ready to go!
+        </button>
       </form>
     </div>
    );
