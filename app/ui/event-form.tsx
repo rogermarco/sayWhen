@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Map from './map';
-import Link from 'next/link';
+// import Link from 'next/link';
 // import SubmitButton from './submit-button';
+import { useRouter } from 'next/navigation';
 
 
 export interface BuilderTypes {
@@ -29,6 +30,8 @@ function EventForm ({ eventPageLink }: EventFormProps) {
 
   const modesArray = ['Autocracy', 'Democracy'];
   const locationArray = ['I know where', 'I want help'];
+
+  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -122,11 +125,10 @@ function EventForm ({ eventPageLink }: EventFormProps) {
           />  
           }
         </div>
-        <Link href={{pathname: `/${eventPageLink}`}}>
-          <button type='submit' className='btn-secondary'>
+        {/* MUST USE ROUTER.PUSH INSTEAD OF <LINK> TO MAKE REDIRECTION AND POST WORK TOGETHER */}
+          <button type='submit' className='btn-secondary' onClick={() => router.push(`/${eventPageLink}`)}>
             Ready to go!
           </button>
-        </Link>
       </form>
     </div>
    );
