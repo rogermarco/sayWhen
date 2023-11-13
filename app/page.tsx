@@ -11,7 +11,7 @@ export default async function Home() {
   // lets go drilling to fix this href client/server issue
   // generate new event page link on server side
   // send it to client side via eventForm -> submitButton
-  const eventPage = uuidv4().slice(0, 5);
+  const eventPageLink = uuidv4().slice(0, 5);
 
   return (
     <main>
@@ -31,7 +31,7 @@ export default async function Home() {
         </div>
       </div>
       <div className='h-screen align-bottom' id='form'>
-        <EventForm eventPage={eventPage}/>
+        <EventForm eventPageLink={eventPageLink}/>
       </div>
     </main>
   )
