@@ -19,7 +19,8 @@ function Map ( {eventBuilder, setEventBuilder}: MapProps ) {
       }
       options={
         {
-          types: ['bar'],
+          // only restricting this for api call count reasons even though i doubt this actually helps
+          types: ['bar', 'restaurant', 'cafe'],
           componentRestrictions: {country: 'es'},
         }
       }
