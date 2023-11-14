@@ -49,32 +49,34 @@ function EventForm ({ eventPageLink }: EventFormProps) {
   return ( 
     <div className='w-full h-full flex'>
       <form className='m-auto w-[450px]' onSubmit={handleSubmit}>
-        <h1 className='text-center'>Start a party!</h1>
-        <div className='form-control'>
-          <h2>Title</h2>
+        <h1 className='text-center text-4xl font-semibold tracking-tighter'>Start a party!</h1>
+        <div className='py-3'>
           <input
           type='text' 
           name='title' 
           required={true} 
-          className='w-full'
+          placeholder='Title'
+          className='w-full form-heading border-b-4 border-black'
           onChange={e => setEventBuilder({...eventBuilder, title: e.target.value})}
           />
         </div>
 
-        <h2>Pick a date or ask your guests</h2>
-        <div className='form-control flex flex-col justify-around'>
+        <h3 className='form-heading'>When?</h3>
+        <div className='flex flex-col justify-around'>
           {/* MODE SELECTION */}
-          <div className='flex'>
+          <div className='flex justify-between'>
             {modesArray.map((mode, index) => {
               return (
                 <div key={index}>
                   <input
                   type='radio'
+                  id={`${mode}`}
                   name='mode'
                   required={true}
                   onChange={() => setDateMode(mode)}
+                  className='hidden peer'
                   />
-                  <label className='px-3'>{`${mode} mode`}</label>
+                  <label className='mode-buttons' htmlFor={`${mode}`}><p className='w-full text-center'>{`${mode} mode`}</p></label>
                 </div>
               )
             })}
@@ -86,27 +88,30 @@ function EventForm ({ eventPageLink }: EventFormProps) {
             name='date'
             required={true}
             onChange={(e) => setEventBuilder({...eventBuilder, date: e.target.value})}
+            className='w-full form-heading border-b-4 border-black'
             />
             ||
           (dateMode == 'Democracy') &&
-            <p>some interactive calendar</p>
+            <p className='w-full form-heading border-b-4 border-black'>some other selection</p>
           }
         </div>
 
-        <h2>Pick the location</h2>
-        <div className='form-control flex flex-col justify-around'>
+        <h3 className='form-heading pt-3'>Where?</h3>
+        <div className='flex flex-col justify-around'>
           {/* LOCATION SELECTION */}
-          <div className='flex'>
+          <div className='flex justify-between'>
             {locationArray.map((location, index) => {
               return (
                 <div key={index}>
                   <input
                   type='radio'
+                  id={`${location}`}
                   name='location'
                   required={true}
                   onChange={() => setLocationMode(location)}
+                  className='hidden peer'
                   />
-                  <label className='px-3'>{`${location}`}</label>
+                  <label className='mode-buttons text-center' htmlFor={`${location}`}><p className='w-full text-center'>{`${location}`}</p></label>
                 </div>
               )
             })}
@@ -120,15 +125,17 @@ function EventForm ({ eventPageLink }: EventFormProps) {
             type='text'
             name='search'
             required={true}
-            className='w-full'
-            placeholder="search for places with 'restaurant', 'bar', 'cafe', etc"
+            className='w-full form-heading border-b-4 border-black'
+            placeholder="'restaurant', 'bar', 'cafe', etc"
           />  
           }
         </div>
         {/* MUST USE ROUTER.PUSH INSTEAD OF <LINK> TO MAKE REDIRECTION AND POST WORK TOGETHER */}
-          <button type='submit' className='btn-secondary' onClick={() => router.push(`/${eventPageLink}`)}>
+        <div className='flex justify-center pt-3'>
+          <button type='submit' className='btn-secondary justify-center form-heading' onClick={() => router.push(`/${eventPageLink}`)}>
             Ready to go!
           </button>
+        </div>
       </form>
     </div>
    );

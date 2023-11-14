@@ -14,14 +14,14 @@ function Button ({ label }: ButtonProps) {
   return ( 
     <>
     {(label == 'Register / Log in') && <button
-      className='btn-primary'
+      className='btn-primary font-semibold tracking-tighter text-xl'
     >
     {label}
     </button>
     ||
     (label == 'Continue without account') &&
     <button
-      className='btn-primary'
+      className='btn-primary font-semibold tracking-tighter text-xl'
       onClick={scrollToForm}
     >
     {label}

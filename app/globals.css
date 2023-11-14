@@ -4,9 +4,15 @@
 
 @layer components {
   .btn-primary {
-    @apply h-20 w-52 items-center text-center tracking-tighter rounded-lg bg-logo-orange text-white transition-colors hover:bg-orange-600
+    @apply h-20 w-52 items-center tracking-tighter rounded-lg bg-logo-orange text-white transition-colors hover:bg-orange-600
   }
   .btn-secondary {
-    @apply h-10 w-40 items-center text-center tracking-tighter rounded-lg bg-logo-orange text-white transition-colors hover:bg-orange-600
+    @apply h-10 w-48 items-center tracking-tighter rounded-lg bg-logo-orange text-white transition-colors hover:bg-orange-600
+  }
+  .form-heading {
+    @apply font-semibold tracking-tighter text-2xl
+  }
+  .mode-buttons {
+    @apply inline-flex items-center justify-between w-[200px] h-10 font-semibold tracking-tighter bg-white border border-logo-orange rounded-lg cursor-pointer peer-checked:bg-logo-orange peer-checked:text-white hover:bg-logo-orange hover:text-white
   }
 }

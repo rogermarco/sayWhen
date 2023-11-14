@@ -23,6 +23,7 @@ function Map ( {eventBuilder, setEventBuilder}: MapProps ) {
           componentRestrictions: {country: 'es'},
         }
       }
+      className='w-full form-heading border-b-4 border-black'
     />
     {eventBuilder.location && 
       <iframe
