@@ -16,18 +16,18 @@ export default async function EventPage () {
 
   return ( 
     <div className='flex flex-col justify-center items-center mt-20'>
-      <div className='flex border-b-4 border-black'>
-        <h1 className='font-semibold tracking-tighter text-5xl py-10'>{event.title}</h1>
+      <div className='flex border-b-4 border-logo-blue'>
+        <h1 className='font-semibold tracking-tighter text-5xl pt-10 pb-8'>{event.title}</h1>
         <ShareButton url={urlToShare}/>
       </div>
       <p className='font-semibold tracking-tighter text-4xl p-5'>When?</p>
-      <div className='flex flex-col items-center'>
-        <h2>{dayjs(event.date).format('dddd D MMMM YYYY')}</h2>
-        <h2>{dayjs(event.date).format('HH:mm')}</h2>
+      <div className='flex flex-col items-center border-b-4 border-logo-blue'>
+        <h2 className='text-lg tracking-tighter'>{dayjs(event.date).format('dddd D MMMM YYYY')}</h2>
+        <h2 className='pb-5 text-lg tracking-tighter'>{dayjs(event.date).format('HH:mm')}</h2>
       </div>
       <p className='font-semibold tracking-tighter text-4xl p-5'>Where?</p>
-      <p className='font-semibold'>{parsedId.result.name}</p>
-      <p className=''>{parsedId.result.formatted_address}</p>
+      <p className='font-semibold text-lg tracking-tighter'>{parsedId.result.name}</p>
+      <p className='text-lg tracking-tighter'>{parsedId.result.formatted_address}</p>
       <iframe
         width="450"
         height="450"
