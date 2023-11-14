@@ -62,10 +62,10 @@ function EventForm ({ eventPageLink }: {eventPageLink: string}) {
             <Image 
             src={help} 
             alt='Help text'
-            className='inset-0 z-0'
             />
             <div className='hover-icon'>
-              What is this? Choose if you want to pick your own date now, or ask your friends to help you out.
+              {/* this guys a dick and pops up whenever the house is in line below the form */}
+              Choose if you want to pick your own date now, or ask your friends to help you out.
             </div>
           </div>
         </div>
@@ -95,11 +95,15 @@ function EventForm ({ eventPageLink }: {eventPageLink: string}) {
             name='date'
             required={true}
             onChange={(e) => setEventBuilder({...eventBuilder, date: e.target.value})}
-            className='w-full form-heading border-b-4 border-black'
+            className='pt-2 w-full form-heading border-b-4 border-black'
             />
             ||
           (dateMode == 'Democracy') &&
-            <p className='w-full form-heading border-b-4 border-black'>some other selection</p>
+          <>
+            <input className='pt-2 w-full form-heading border-b-4 border-black' placeholder='Option one'/>
+            <input className='w-full form-heading border-b-4 border-black' placeholder='Option two'/>
+            <input className='w-full form-heading border-b-4 border-black' placeholder='Option three?'/>
+          </>
           }
         </div>
 

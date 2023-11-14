@@ -12,12 +12,12 @@ function ShareButton ({ url }: {url: string}) {
 
   return ( 
     <div className='flex items-center pl-5 cursor-pointer' onClick={() => handleClick(url)}>
-    <Image 
-    src={copy}
-    alt='Copy to clipboard'
-    className='flex items-center'
-    />
-  </div>
+      <Image 
+      src={copy}
+      alt='Copy to clipboard'
+      className='flex items-center'
+      />
+    </div>
    );
 }
 
