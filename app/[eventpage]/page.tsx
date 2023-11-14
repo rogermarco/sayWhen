@@ -2,10 +2,12 @@ import { headers } from 'next/headers';
 import dayjs from 'dayjs';
 import { API_KEY } from '@/secrets/apiKey';
 import { getEventById, parsePlaceId } from '../lib/helpers';
+import ShareButton from '../ui/share-button';
 
 export default async function EventPage () {
   // pull _id entry from event in database, match with url provided by headers object
   const _headers = headers();
+  const urlToShare = _headers.get('x-url')!;
   const currentUrl = _headers.get('x-url')!.replace('http://localhost:3000/', '');
   const { event } = await getEventById(currentUrl);
 
@@ -14,12 +16,18 @@ export default async function EventPage () {
 
   return ( 
     <div className='flex flex-col justify-center items-center mt-20'>
-      <h1 className='font-semibold tracking-tighter text-5xl p-10 border-b-4 border-black'>{event.title}</h1>
+      <div className='flex border-b-4 border-black'>
+        <h1 className='font-semibold tracking-tighter text-5xl py-10'>{event.title}</h1>
+        <ShareButton url={urlToShare}/>
+      </div>
       <p className='font-semibold tracking-tighter text-4xl p-5'>When?</p>
-      <h2>{dayjs(event.date).format('dddd D MMMM YYYY')}</h2>
+      <div className='flex flex-col items-center'>
+        <h2>{dayjs(event.date).format('dddd D MMMM YYYY')}</h2>
+        <h2>{dayjs(event.date).format('HH:mm')}</h2>
+      </div>
       <p className='font-semibold tracking-tighter text-4xl p-5'>Where?</p>
-      <p>{parsedId.result.name}</p>
-      <p>{parsedId.result.formatted_address}</p>
+      <p className='font-semibold'>{parsedId.result.name}</p>
+      <p className=''>{parsedId.result.formatted_address}</p>
       <iframe
         width="450"
         height="450"
