@@ -13,6 +13,9 @@
     @apply font-semibold tracking-tighter text-2xl
   }
   .mode-buttons {
-    @apply inline-flex items-center justify-between w-[200px] h-10 font-semibold tracking-tighter bg-white border border-logo-orange rounded-lg cursor-pointer peer-checked:bg-logo-orange peer-checked:text-white hover:bg-logo-orange hover:text-white
+    @apply inline-flex items-center justify-between w-[200px] h-10 text-lg font-semibold tracking-tighter bg-white border border-logo-orange rounded-lg cursor-pointer peer-checked:bg-logo-orange peer-checked:text-white hover:bg-logo-orange hover:text-white
+  }
+  .hover-icon {
+    @apply pl-2 w-[1px] h-[1px] opacity-0 hover:opacity-80 hover:w-96 hover:h-14 duration-[30] z-10 flex absolute border-dashed border-2 border-gray-600 bg-gray-200 text-black font-semibold tracking-tighter
   }
 }

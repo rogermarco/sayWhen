@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Map from './map';
-// import Link from 'next/link';
-// import SubmitButton from './submit-button';
 import { useRouter } from 'next/navigation';
 
+import Image from 'next/image';
+import help from '../../public/help.png';
 
 export interface BuilderTypes {
   _id: string,
@@ -14,11 +14,7 @@ export interface BuilderTypes {
   location: string,
 }
 
-interface EventFormProps {
-  eventPageLink: string
-}
-
-function EventForm ({ eventPageLink }: EventFormProps) {
+function EventForm ({ eventPageLink }: {eventPageLink: string}) {
   const [dateMode, setDateMode] = useState('');
   const [locationMode, setLocationMode] = useState('');
   const [eventBuilder, setEventBuilder] = useState<BuilderTypes>({
@@ -60,8 +56,19 @@ function EventForm ({ eventPageLink }: EventFormProps) {
           onChange={e => setEventBuilder({...eventBuilder, title: e.target.value})}
           />
         </div>
-
-        <h3 className='form-heading'>When?</h3>
+        <div className='flex'>
+          <h3 className='form-heading'>When?</h3>
+          <div className='flex items-center px-2'>
+            <Image 
+            src={help} 
+            alt='Help text'
+            className='inset-0 z-0'
+            />
+            <div className='hover-icon'>
+              What is this? Choose if you want to pick your own date now, or ask your friends to help you out.
+            </div>
+          </div>
+        </div>
         <div className='flex flex-col justify-around'>
           {/* MODE SELECTION */}
           <div className='flex justify-between'>
@@ -96,7 +103,18 @@ function EventForm ({ eventPageLink }: EventFormProps) {
           }
         </div>
 
-        <h3 className='form-heading pt-3'>Where?</h3>
+        <div className='flex mt-3'>
+          <h3 className='form-heading'>Where?</h3>
+          <div className='flex items-center px-2'>
+            <Image 
+            src={help} 
+            alt='Help text'
+            />
+            <div className='hover-icon'>
+              Do you know the best place? If not, search for some ideas.
+            </div>
+          </div>
+        </div>
         <div className='flex flex-col justify-around'>
           {/* LOCATION SELECTION */}
           <div className='flex justify-between'>
