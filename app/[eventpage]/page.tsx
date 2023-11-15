@@ -1,5 +1,5 @@
 import { headers } from 'next/headers';
-import dayjs from 'dayjs';
+import dayjs from 'dayjs'; // => date formatter
 import { API_KEY } from '@/secrets/apiKey';
 import { getEventById, parsePlaceId } from '../lib/helpers';
 import ShareButton from '../ui/share-button';

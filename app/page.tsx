@@ -1,14 +1,12 @@
-// import Nav from './ui/nav';
 import Button from './ui/button';
 import EventForm from './ui/event-form';
+import { v4 as uuidv4 } from 'uuid'
 
 import Image from 'next/image';
 import logoBig from '../public/logo-big.png'
 
-import { v4 as uuidv4 } from 'uuid'
 
 export default async function Home() { 
-  // lets go drilling to fix this href client/server issue
   // generate new event page link on server side
   // send it to client side via eventForm -> submitButton
   const eventPageLink = uuidv4().slice(0, 5);
