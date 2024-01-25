@@ -15,15 +15,15 @@ Custom Tailwind classes have been saved in globals.css. Logo colours saved in ta
 
 ## What works?
 
-Creating an event using autocracy mode and the 'I know where' location option. (maps api key willing).
+Creating an event using autocracy mode and the 'I know where' location option (maps api key willing).
 
 The unique link that router.push() uses is the same as what gets saved as the _id for the event database entry (passed down by the Home component uuid() function).
 Note middleware.ts in /root - it sets a custom header to page requests so that the app/[eventpage] server-side component can read the URL string properly via headers(). 
 
 API keys are required to make the maps iframe embedding work, just add your key to the url that gets called as the src value.
 
-## What doesn't work?
+## Works-in-progress
 
-Login buttons do nothing.
-Democracy mode does nothing.
-'I want help' location option does nothing.
+- Accounts
+- Democracy mode
+- 'I want help' location option
